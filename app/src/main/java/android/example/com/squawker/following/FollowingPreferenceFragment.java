@@ -23,13 +23,25 @@ import androidx.preference.PreferenceFragmentCompat;
 /**
  * Shows the list of instructors you can follow
  */
+//TODO (1) Implement onSharedPreferenceChangeListener
 public class FollowingPreferenceFragment extends PreferenceFragmentCompat {
 
     private final static String LOG_TAG = FollowingPreferenceFragment.class.getSimpleName();
 
+
+
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+        // TODO (2) When a SharedPreference changes, check which preference it is and subscribe or
+        // un-subscribe to the correct topics.
+        // Ex. FirebaseMessaging.getInstance().subscribeToTopic("key_lyla");
+        // subscribes to Lyla's squawks.
+
+
         // Add visualizer preferences, defined in the XML file in res->xml->preferences_squawker
         addPreferencesFromResource(R.xml.following_squawker);
     }
+
+    // TODO (3) Make sure to register and unregister this as a Shared Preference Change listener, in
+    // onCreate and onDestroy.
 }

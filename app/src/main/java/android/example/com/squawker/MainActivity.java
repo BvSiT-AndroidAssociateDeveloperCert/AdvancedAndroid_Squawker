@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements
         // BvS Service is al ready created in TFCM.04-Solution-AddFirebaseMessagingServiceBvS since
         //  FirebaseInstanceIdService is deprecated
 
-        // TODO (2) As part of the new Service - Override onMessageReceived. This method will
+        // DONE (2) As part of the new Service - Override onMessageReceived. This method will
         // be triggered whenever a squawk is received. You can get the data from the squawk
         // message using getData(). When you send a test message, this data will include the
         // following key/value pairs:
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements
         // authorKey: Ex. "key_test"
         // message: Ex. "Hello world"
         // date: Ex. 1484358455343
-        // TODO (3) As part of the new Service - If there is message data, get the data using
+        // DONE (3) As part of the new Service - If there is message data, get the data using
         // the keys and do two things with it :
         // 1. Display a notification with the first 30 character of the message
         // 2. Use the content provider to insert a new message into the local database
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements
         // look at the notes in the classroom for help.
 
 
-        // TODO (5) You can delete the code below for getting the extras from a notification message,
+        // DONE (5) You can delete the code below for getting the extras from a notification message,
         // since this was for testing purposes and not part of Squawker.
 
 
