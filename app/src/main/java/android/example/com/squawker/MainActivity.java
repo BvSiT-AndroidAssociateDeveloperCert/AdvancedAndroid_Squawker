@@ -35,6 +35,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+
 public class MainActivity extends AppCompatActivity implements
         LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -79,11 +83,28 @@ public class MainActivity extends AppCompatActivity implements
         }
 
         // TODO (1) Make a new package for your FCM service classes called "fcm"
-        // TODO (2) Create a new Service class that extends FirebaseInstanceIdService.
+
+        //TODO (2) Create a new Service class that extends FirebaseInstanceIdService
+        // [BvS DEPRECATED now:  Create a new Service class that extends FirebaseMessagingService]
+
+        // [BvS DEPRECATED]
         // You'll need to implement the onTokenRefresh method. Simply have it print out
         // the new token.
+        //[BvS Now:  You'll need to implement the onNewToken method. Simply have it print out
+        //the new token.]
+
+
+
+
         // TODO (3) Here, in MainActivity, get a token using FirebaseInstanceId.getInstance().getToken()
         // TODO (4) Get the message from that token and print it in a log statement
+
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
+                Log.d("Token", "onSuccess: " + instanceIdResult.getToken());
+            }
+        });
 
 
 

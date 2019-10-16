@@ -20,8 +20,21 @@
             </intent-filter>
         </activity>
 
-        <!-- TODO (5) Add your new service here, with an intent filter for action
-                com.google.firebase.INSTANCE_ID_EVENT" -->
+
+
+        <!-- DEPRECATED(5) Add your new service here, with an intent filter for action
+                com.google.firebase.INSTANCE_ID_EVENT"
+             TODO (5) Add your new service here, with an intent filter for action
+                "com.google.firebase.MESSAGING_EVENT"
+         -->
+        <service android:name=".fcm.SquawkerFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT">
+                </action>
+            </intent-filter>
+        </service>
+
+
 
         <provider
             android:name=".provider.generated.SquawkProvider"
