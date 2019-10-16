@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // TODO (1) Get the test data here from the extras bundle that came with this intent.
+        // DONE (1) Get the test data here from the extras bundle that came with this intent.
         // To confirm that the data was passed in, make sure to show the data in a log statement.
 
         // Gets the extra data from the intent that started the activity. For *notification*
@@ -82,9 +82,33 @@ public class MainActivity extends AppCompatActivity implements
             Log.d(LOG_TAG, "Contains: " + extras.getString("test"));
         }
 
-        // TODO (1) Make a new package for your FCM service classes called "fcm"
+        // TODO (1) Make a new Service in the fcm package that extends from FirebaseMessagingService.
+        // TODO (2) As part of the new Service - Override onMessageReceived. This method will
+        // be triggered whenever a squawk is received. You can get the data from the squawk
+        // message using getData(). When you send a test message, this data will include the
+        // following key/value pairs:
+        // test: true
+        // author: Ex. "TestAccount"
+        // authorKey: Ex. "key_test"
+        // message: Ex. "Hello world"
+        // date: Ex. 1484358455343
+        // TODO (3) As part of the new Service - If there is message data, get the data using
+        // the keys and do two things with it :
+        // 1. Display a notification with the first 30 character of the message
+        // 2. Use the content provider to insert a new message into the local database
+        // Hint: You shouldn't be doing content provider operations on the main thread.
+        // If you don't know how to make notifications or interact with a content provider
+        // look at the notes in the classroom for help.
 
-        //TODO (2) Create a new Service class that extends FirebaseInstanceIdService
+
+        // TODO (5) You can delete the code below for getting the extras from a notification message,
+        // since this was for testing purposes and not part of Squawker.
+
+
+
+        // DONE (1) Make a new package for your FCM service classes called "fcm"
+
+        //DONE (2) Create a new Service class that extends FirebaseInstanceIdService
         // [BvS DEPRECATED now:  Create a new Service class that extends FirebaseMessagingService]
 
         // [BvS DEPRECATED]
@@ -96,8 +120,8 @@ public class MainActivity extends AppCompatActivity implements
 
 
 
-        // TODO (3) Here, in MainActivity, get a token using FirebaseInstanceId.getInstance().getToken()
-        // TODO (4) Get the message from that token and print it in a log statement
+        // DONE (3) Here, in MainActivity, get a token using FirebaseInstanceId.getInstance().getToken()
+        // DONE (4) Get the message from that token and print it in a log statement
 
         FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
             @Override

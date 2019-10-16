@@ -24,9 +24,11 @@
 
         <!-- DEPRECATED(5) Add your new service here, with an intent filter for action
                 com.google.firebase.INSTANCE_ID_EVENT"
-             TODO (5) Add your new service here, with an intent filter for action
+             DONE (5) Add your new service here, with an intent filter for action
                 "com.google.firebase.MESSAGING_EVENT"
          -->
+
+
         <service android:name=".fcm.SquawkerFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT">
@@ -34,7 +36,8 @@
             </intent-filter>
         </service>
 
-
+        <!-- TODO (4) Add your new service here, with an intent filter for action
+                com.google.firebase.MESSAGING_EVENT -->
 
         <provider
             android:name=".provider.generated.SquawkProvider"
