@@ -27,7 +27,11 @@ dependencies {
     // google.services.json file in the app folder. After syncing the changes, you should be able
     // to send a notification to your app using the Firebase console. The app must be in the
     // background!
-	
+
+    implementation 'com.google.firebase:firebase-core:17.2.0'
+    //BvS: Tested seems necessary!! Not mentionned in console
+    implementation 'com.google.firebase:firebase-messaging:20.0.0'
+
 /*	
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -55,3 +59,4 @@ dependencies {
     // Preferences Dependencies
     implementation 'androidx.preference:preference:1.0.0'
 }
+apply plugin: 'com.google.gms.google-services'
