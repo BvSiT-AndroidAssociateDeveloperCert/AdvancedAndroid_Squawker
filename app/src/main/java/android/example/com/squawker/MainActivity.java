@@ -82,7 +82,10 @@ public class MainActivity extends AppCompatActivity implements
             Log.d(LOG_TAG, "Contains: " + extras.getString("test"));
         }
 
-        // TODO (1) Make a new Service in the fcm package that extends from FirebaseMessagingService.
+        // DEPRECATED (1) Make a new Service in the fcm package that extends from FirebaseMessagingService.
+        // BvS Service is al ready created in TFCM.04-Solution-AddFirebaseMessagingServiceBvS since
+        //  FirebaseInstanceIdService is deprecated
+
         // TODO (2) As part of the new Service - Override onMessageReceived. This method will
         // be triggered whenever a squawk is received. You can get the data from the squawk
         // message using getData(). When you send a test message, this data will include the
