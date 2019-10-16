@@ -10,7 +10,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -30,14 +30,14 @@ dependencies {
 */
 
 	testImplementation 'junit:junit:4.12'
-	androidTestImplementation 'com.android.support.test:runner:1.0.2'
-	androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+	androidTestImplementation 'androidx.test:runner:1.1.0'
+	androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
 
-    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
     //testCompile 'junit:junit:4.12'
 
     // RecyclerView
-    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
 
     // Schematic dependencies for ContentProvider
 /*
@@ -48,5 +48,5 @@ dependencies {
     annotationProcessor 'net.simonvt.schematic:schematic-compiler:0.6.3'
 	
     // Preferences Dependencies
-    implementation 'com.android.support:preference-v7:28.0.0'
+    implementation 'androidx.preference:preference:1.0.0'
 }
