@@ -48,9 +48,6 @@ public class SquawkerFirebaseMessagingService extends FirebaseMessagingService {
             insertSquawk(data);
             dumpTable(SquawkProvider.SquawkMessages.CONTENT_URI);
         }
-
-
-
     }
 
     @Override

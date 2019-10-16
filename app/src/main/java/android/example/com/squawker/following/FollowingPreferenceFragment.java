@@ -24,6 +24,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.SwitchPreferenceCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -44,73 +45,49 @@ public class FollowingPreferenceFragment extends PreferenceFragmentCompat
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
 
-        getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+        //getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
 
         // TODO (2) When a SharedPreference changes, check which preference it is and subscribe or
         // un-subscribe to the correct topics.
         // Ex. FirebaseMessaging.getInstance().subscribeToTopic("key_lyla");
         // subscribes to Lyla's squawks.
-
-
         // Add visualizer preferences, defined in the XML file in res->xml->preferences_squawker
         addPreferencesFromResource(R.xml.following_squawker);
+
     }
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        Preference pref = getPreferenceManager().findPreference(key);
+        Preference preference = getPreferenceManager().findPreference(key);
 
-        if (pref!=null) {
-            boolean bIsOn = sharedPreferences.getBoolean(key,false);
+        if (preference != null && preference instanceof SwitchPreferenceCompat) {
+            // Get the current state of the switch preference
+            boolean isOn = sharedPreferences.getBoolean(key, false);
+            if (isOn) {
+                // The preference key matches the following key for the associated instructor in
+                // FCM. For example, the key for Lyla is key_lyla (as seen in
+                // following_squawker.xml). The topic for Lyla's messages is /topics/key_lyla
 
-            if (bIsOn){
-                FirebaseMessaging.getInstance().subscribeToTopic(key).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        msg="Subscription succeeded";
-                        if (!task.isSuccessful()){
-                            msg="Subscription failed";
-                        }
-                    }
-                });
+                // Subscribe
+                FirebaseMessaging.getInstance().subscribeToTopic(key);
+                Log.d(LOG_TAG, "Subscribing to " + key);
+            } else {
+                // Un-subscribe
+                FirebaseMessaging.getInstance().unsubscribeFromTopic(key);
+                Log.d(LOG_TAG, "Un-subscribing to " + key);
             }
-            else {
-                FirebaseMessaging.getInstance().unsubscribeFromTopic(key).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        msg="Subscription ended";
-                        if (!task.isSuccessful()){
-                            msg="Unsubscription failed";
-                        }
-
-                    }
-                });
-            }
-
-            Log.d(LOG_TAG, "onSharedPreferenceChanged: "+msg);
-            Toast.makeText(getActivity(),msg,Toast.LENGTH_SHORT).show();
         }
-
-        {
-            FirebaseMessaging.getInstance().subscribeToTopic(key).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    String msg="Subscription succeeded";
-                    if (!task.isSuccessful()){
-                        msg="Subscription failed";
-                    }
-                    Log.d(LOG_TAG, "onComplete: "+msg);
-                    Toast.makeText(getActivity(),msg,Toast.LENGTH_SHORT).show();
-                }
-            });
-
-        }
-
     }
 
     // TODO (3) Make sure to register and unregister this as a Shared Preference Change listener, in
     // onCreate and onDestroy.
 
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+    }
 
     @Override
     public void onDestroy() {
