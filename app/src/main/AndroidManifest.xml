@@ -20,6 +20,9 @@
             </intent-filter>
         </activity>
 
+        <!-- TODO (5) Add your new service here, with an intent filter for action
+                com.google.firebase.INSTANCE_ID_EVENT" -->
+
         <provider
             android:name=".provider.generated.SquawkProvider"
             android:authorities="android.example.com.squawker.provider.provider"
