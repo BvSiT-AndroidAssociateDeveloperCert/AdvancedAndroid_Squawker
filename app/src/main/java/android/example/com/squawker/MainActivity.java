@@ -41,6 +41,9 @@ public class MainActivity extends AppCompatActivity implements
     private static String LOG_TAG = MainActivity.class.getSimpleName();
     private static final int LOADER_ID_MESSAGES = 0;
 
+
+
+
     RecyclerView mRecyclerView;
     LinearLayoutManager mLayoutManager;
     SquawkAdapter mAdapter;
@@ -62,6 +65,10 @@ public class MainActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // TODO (1) Get the test data here from the extras bundle that came with this intent.
+        // To confirm that the data was passed in, make sure to show the data in a log statement.
+
 
         mRecyclerView = (RecyclerView) findViewById(R.id.squawks_recycler_view);
 
